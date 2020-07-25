@@ -16,22 +16,21 @@ struct ContentView: View {
     
     var body: some View {
         
-        return ZStack(content : {
-            RoundedRectangle(cornerRadius : 10.0)
-                .fill(Color.white)
-            RoundedRectangle(cornerRadius : 10.0)
-                .stroke(lineWidth : 3.0)
-            Text("👻")
-        })
-            .font(Font.largeTitle)
+        HStack {
+            ForEach(0 ..< 6 ) { _ in
+                CardView(isFaceUp : true)
+            } // ForEach(0 ..< 6 ) { _ in }
+        } // HStack {}
             .padding()
             .foregroundColor(Color.orange)
-    }
+            .font(Font.largeTitle)
+        
+    } // var body: some View {}
      
     
     
     
-}
+} // struct ContentView: View {}
 
 
 
