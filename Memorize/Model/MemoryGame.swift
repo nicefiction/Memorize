@@ -29,6 +29,30 @@ struct MemoryGame<CardContent> {
     
     
     
+     // //////////////////////////
+    //  MARK: INITIALIZER METHODS
+    
+    init(numberOfPairsOfCards: Int ,
+         cardContentFactory: (Int) -> CardContent) {
+        
+        cards = Array<Card>()
+        
+        for pairIndex in 0 ..< numberOfPairsOfCards {
+            let content = cardContentFactory(pairIndex)
+            
+            cards.append(Card(isFaceUp : false ,
+                              isMatched : false ,
+                              content : content))
+            
+            cards.append(Card(isFaceUp : false ,
+                              isMatched : false ,
+                              content : content))
+        } // for pairIndex in 0 ..< numberOfPairsOfCards {}
+        
+    } // init() {}
+    
+    
+    
      // //////////////
     //  MARK: METHODS
     

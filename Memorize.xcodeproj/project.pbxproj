@@ -15,6 +15,7 @@
 		09089B6B24CC285100B07CD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09089B6924CC285100B07CD4 /* LaunchScreen.storyboard */; };
 		09089B7624CC55D000B07CD4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09089B7524CC55D000B07CD4 /* CardView.swift */; };
 		09089B7824CCB81900B07CD4 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09089B7724CCB81900B07CD4 /* MemoryGame.swift */; };
+		09089B7B24CCC67600B07CD4 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09089B7A24CCC67600B07CD4 /* EmojiMemoryGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		09089B6C24CC285100B07CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09089B7524CC55D000B07CD4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		09089B7724CCB81900B07CD4 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
+		09089B7A24CCC67600B07CD4 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				09089B6424CC285100B07CD4 /* Assets.xcassets */,
 				09089B7224CC557A00B07CD4 /* Model */,
+				09089B7924CCC63200B07CD4 /* ViewModel */,
 				09089B7324CC558400B07CD4 /* View */,
 				09089B5E24CC285000B07CD4 /* AppDelegate.swift */,
 				09089B6024CC285000B07CD4 /* SceneDelegate.swift */,
@@ -103,6 +106,14 @@
 				09089B7524CC55D000B07CD4 /* CardView.swift */,
 			);
 			path = "View Component";
+			sourceTree = "<group>";
+		};
+		09089B7924CCC63200B07CD4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				09089B7A24CCC67600B07CD4 /* EmojiMemoryGame.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				09089B7824CCB81900B07CD4 /* MemoryGame.swift in Sources */,
 				09089B7624CC55D000B07CD4 /* CardView.swift in Sources */,
 				09089B6324CC285000B07CD4 /* ContentView.swift in Sources */,
+				09089B7B24CCC67600B07CD4 /* EmojiMemoryGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
