@@ -9,12 +9,17 @@
 import SwiftUI
 
 
-class EmojiMemoryGame {
+class EmojiMemoryGame: ObservableObject {
+    
+     // //////////////////
+    //  PROPERTY WRAPPERS
+    
+    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    
+    
     
      // ///////////
     //  PROPERTIES
-    
-    private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
     // MARK: Access to the Model
     

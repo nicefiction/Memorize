@@ -11,10 +11,10 @@ import SwiftUI
 
 struct EmojiMemoryGameView: View {
     
-     // /////////////////
-    //  MARK: PROPERTIES
+     // ////////////////////////
+    //  MARK: PROPERTY WRAPPERS
     
-    var viewModel: EmojiMemoryGame
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     
     
