@@ -14,10 +14,7 @@ class EmojiMemoryGame {
      // ///////////
     //  PROPERTIES
     
-    private var model: MemoryGame<String> = MemoryGame<String>(numberOfPairsOfCards : 2 ,
-                                                               cardContentFactory : { (pairIndex: Int) -> String in
-                                                                  return "🤩"
-                                                               })
+    private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
     // MARK: Access to the Model
     
@@ -29,6 +26,20 @@ class EmojiMemoryGame {
     
      // ////////
     //  METHODS
+    
+    static func createMemoryGame()
+        -> MemoryGame<String> {
+        
+        let emojis: Array<String> = ["👻" , "🎃" , "🕷"]
+        
+            return MemoryGame<String>(numberOfPairsOfCards : emojis.count ,
+                                      cardContentFactory : {(pairIndex: Int) -> String in
+                                        return emojis[pairIndex]
+            })
+    
+    } // static func createMemoryGame() -> MemoryGame<String> {}
+    
+    
     
     // MARK: Intent/s
     

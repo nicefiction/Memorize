@@ -11,14 +11,22 @@ import SwiftUI
 
 struct ContentView: View {
     
+     // /////////////////
+    //  MARK: PROPERTIES
+    
+    var viewModel: EmojiMemoryGame
+    
+    
+    
      // //////////////////////////
     //  MARK: COMPUTED PROPERTIES
     
     var body: some View {
         
         HStack {
-            ForEach(0 ..< 6 ) { _ in
-                CardView(isFaceUp : true)
+            ForEach(viewModel.cards) { card in
+                CardView(card : card)
+                    .onTapGesture(perform : { self.viewModel.choose(card : card) })
             } // ForEach(0 ..< 6 ) { _ in }
         } // HStack {}
             .padding()
@@ -40,7 +48,9 @@ struct ContentView: View {
 //  MARK: PREVIEWS
 
 struct ContentView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        ContentView()
-    }
-}
+        ContentView(viewModel : EmojiMemoryGame())
+    } // static var previews: some View {}
+    
+} // struct ContentView_Previews: PreviewProvider {}
