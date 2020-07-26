@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-struct ContentView: View {
+struct EmojiMemoryGameView: View {
     
      // /////////////////
     //  MARK: PROPERTIES
@@ -50,7 +50,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView(viewModel : EmojiMemoryGame())
+        EmojiMemoryGameView(viewModel : EmojiMemoryGame())
     } // static var previews: some View {}
     
 } // struct ContentView_Previews: PreviewProvider {}
