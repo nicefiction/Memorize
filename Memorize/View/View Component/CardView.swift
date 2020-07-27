@@ -10,6 +10,22 @@ import SwiftUI
 
 struct CardView: View {
     
+     // ////////////////////////
+    //  MARK: Drawing Constants
+    
+    let cornerRadius: CGFloat = 10.0
+    let edgeLineWidth: CGFloat = 3.0
+    
+    
+    func setFontSize(for size: CGSize)
+        -> CGFloat {
+            
+            min(size.width ,
+                size.height) * 0.75
+    } // func setFontSize(size: CGSize) {}
+    
+    
+    
      // /////////////////
     //  MARK: PROPERTIES
 
@@ -18,31 +34,40 @@ struct CardView: View {
     
     
      // //////////////////////////
-    //  MARK: COMPUTED PROPERTIES 
+    //  MARK: COMPUTED PROPERTIES
     
     var body: some View {
         
         GeometryReader { geometryProxy in
             
-            ZStack {
-                if self.card.isFaceUp {
-                    RoundedRectangle(cornerRadius : 10.0)
-                        .stroke(lineWidth : 3.0)
-                    Text(self.card.content)
-                } else {
-                    RoundedRectangle(cornerRadius : 10.0)
-                        .fill()
-                } // if card.isFaceUp {} else {}
-            } // ZStack {}
-                .font(Font.system(size : min(geometryProxy.size.width ,
-                                             geometryProxy.size.height) * 0.75))
+            self.body(for : geometryProxy.size)
             
         } // GeometryReader { geometryProxy in }
-        
-        
-        
-        
     } // var body: some View {}
+    
+    
+    
+     // //////////////
+    //  MARK: METHODS
+    
+    func body(for size: CGSize)
+        -> some View {
+            
+        ZStack {
+            if self.card.isFaceUp {
+                RoundedRectangle(cornerRadius : cornerRadius)
+                    .stroke(lineWidth : edgeLineWidth)
+                Text(self.card.content)
+            } else {
+                RoundedRectangle(cornerRadius : cornerRadius)
+                    .fill()
+            } // if card.isFaceUp {} else {}
+        } // ZStack {}
+            .font(Font.system(size : setFontSize(for : size)))
+            
+    } // func body(for size: CGSize) -> some View {}
+    
+    
     
     
     
