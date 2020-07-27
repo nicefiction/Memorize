@@ -22,16 +22,22 @@ struct CardView: View {
     
     var body: some View {
         
-        ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius : 10.0)
-                    .stroke(lineWidth : 3.0)
-                Text(card.content)
-            } else {
-                RoundedRectangle(cornerRadius : 10.0)
-                    .fill()
-            } // if card.isFaceUp {} else {}
-        } // ZStack {}
+        GeometryReader { geometryProxy in
+            
+            ZStack {
+                if self.card.isFaceUp {
+                    RoundedRectangle(cornerRadius : 10.0)
+                        .stroke(lineWidth : 3.0)
+                    Text(self.card.content)
+                } else {
+                    RoundedRectangle(cornerRadius : 10.0)
+                        .fill()
+                } // if card.isFaceUp {} else {}
+            } // ZStack {}
+                .font(Font.system(size : min(geometryProxy.size.width ,
+                                             geometryProxy.size.height) * 0.75))
+            
+        } // GeometryReader { geometryProxy in }
         
         
         

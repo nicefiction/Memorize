@@ -24,20 +24,17 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         
         HStack {
-            ForEach(viewModel.cards) { card in
+            ForEach(self.viewModel.cards) { card in
                 CardView(card : card)
                     .onTapGesture(perform : { self.viewModel.choose(card : card) })
             } // ForEach(0 ..< 6 ) { _ in }
         } // HStack {}
             .padding()
             .foregroundColor(Color.orange)
-            .font(Font.largeTitle)
+        
+        
         
     } // var body: some View {}
-     
-    
-    
-    
 } // struct ContentView: View {}
 
 
