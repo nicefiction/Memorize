@@ -65,7 +65,7 @@ struct Grid<Item , ItemView>: View
               in layout: GridLayout)
         -> some View {
             
-            let index = items.firstIndex(matching : item)
+            let index = items.firstIndex(matching : item)!
             
             return viewForItem(item)
                 .frame(width : layout.itemSize.width ,
@@ -73,5 +73,5 @@ struct Grid<Item , ItemView>: View
                 .position(layout.location(ofItemAt : index))
     } // func body(for items: [Item]) -> some View {}
     
-    
+     
 } // struct Grid: View {}

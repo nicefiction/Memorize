@@ -12,7 +12,7 @@ import Foundation
 extension Array where Element: Identifiable {
     
     func firstIndex(matching: Element)
-        -> Int {
+        -> Optional<Int> {
             
             for index in 0 ..< self.count {
                 if self[index].id == matching.id {
@@ -20,7 +20,7 @@ extension Array where Element: Identifiable {
                 } // if self[index].id == matching.id {}
             } // for index in 0 ..< self.count {}
             
-            return 0 // FIXME: Bogus
+            return nil // FIXME: Bogus
     } // func index(of item: Item) -> Int {}
     
     
