@@ -9,7 +9,8 @@
 import SwiftUI
 
 
-struct Grid<Item , ItemView>: View {
+struct Grid<Item , ItemView>: View
+    where Item: Identifiable , ItemView: View {
     
      // /////////////////
     //  MARK: PROPERTIES
@@ -23,8 +24,13 @@ struct Grid<Item , ItemView>: View {
     //  MARK: COMPUTED PROPERTIES
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-         
+        
+        GeometryReader { geometryProxy in
+            
+            self.body(for : GridLayout(itemCount : self.items.count ,
+                                       in : geometryProxy.size))
+            
+        } // GeometryReader { geometryProxy in }
     } // var body: some View {}
     
     
@@ -40,4 +46,43 @@ struct Grid<Item , ItemView>: View {
         
     } // init() {}
     
+    
+    
+     // //////////////
+    //  MARK: METHODS
+    
+    func body(for layout: GridLayout)
+        -> some View {
+            
+            ForEach(items) { item in
+                self.body(for : item ,
+                          in : layout)
+            } // ForEach(items) { item in }
+    } // func body(for items: [Item]) -> some View {}
+    
+    
+    func body(for item: Item ,
+              in layout: GridLayout)
+        -> some View {
+            
+            let index = self.index(of : item)
+            
+            return viewForItem(item)
+                .frame(width : layout.itemSize.width ,
+                       height : layout.itemSize.height)
+                .position(layout.location(ofItemAt : index))
+    } // func body(for items: [Item]) -> some View {}
+    
+    
+    func index(of item: Item)
+        -> Int {
+            
+            for index in 0 ..< items.count {
+                if items[index].id == item.id {
+                    return index
+                } // if items[index] == item {}
+            } // for index in items {}
+            
+            return 0 // FIXME: Bogus
+    } // func index(of item: Item) -> Int {}
 } // struct Grid: View {}
