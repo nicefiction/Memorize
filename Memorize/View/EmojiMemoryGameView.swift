@@ -28,7 +28,8 @@ struct EmojiMemoryGameView: View {
                 .onTapGesture(perform : {
                     self.viewModel.choose(card : card)
                 }) // .onTapGesture(perform : {})
-        } // HStack {}
+            .padding(5)
+        } // Grid(items : self.viewModel.cards) { card in }
             .padding()
             .foregroundColor(Color.orange)
         

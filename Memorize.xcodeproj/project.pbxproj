@@ -18,6 +18,7 @@
 		09089B7B24CCC67600B07CD4 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09089B7A24CCC67600B07CD4 /* EmojiMemoryGame.swift */; };
 		0939A1FD24D059DC00345F6C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0939A1FC24D059DC00345F6C /* Grid.swift */; };
 		0939A1FF24D0707800345F6C /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0939A1FE24D0707800345F6C /* GridLayout.swift */; };
+		0939A20224D07A4E00345F6C /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0939A20124D07A4E00345F6C /* Array+Identifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		09089B7A24CCC67600B07CD4 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		0939A1FC24D059DC00345F6C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		0939A1FE24D0707800345F6C /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		0939A20124D07A4E00345F6C /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		09089B7224CC557A00B07CD4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0939A20024D07A2400345F6C /* Extensions */,
 				09089B7724CCB81900B07CD4 /* MemoryGame.swift */,
 			);
 			path = Model;
@@ -120,6 +123,14 @@
 				09089B7A24CCC67600B07CD4 /* EmojiMemoryGame.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0939A20024D07A2400345F6C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0939A20124D07A4E00345F6C /* Array+Identifiable.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 				09089B7824CCB81900B07CD4 /* MemoryGame.swift in Sources */,
 				09089B7624CC55D000B07CD4 /* CardView.swift in Sources */,
 				09089B6324CC285000B07CD4 /* EmojiMemoryGameView.swift in Sources */,
+				0939A20224D07A4E00345F6C /* Array+Identifiable.swift in Sources */,
 				0939A1FD24D059DC00345F6C /* Grid.swift in Sources */,
 				09089B7B24CCC67600B07CD4 /* EmojiMemoryGame.swift in Sources */,
 				0939A1FF24D0707800345F6C /* GridLayout.swift in Sources */,

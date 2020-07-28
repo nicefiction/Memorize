@@ -65,7 +65,7 @@ struct Grid<Item , ItemView>: View
               in layout: GridLayout)
         -> some View {
             
-            let index = self.index(of : item)
+            let index = items.firstIndex(matching : item)
             
             return viewForItem(item)
                 .frame(width : layout.itemSize.width ,
@@ -74,15 +74,4 @@ struct Grid<Item , ItemView>: View
     } // func body(for items: [Item]) -> some View {}
     
     
-    func index(of item: Item)
-        -> Int {
-            
-            for index in 0 ..< items.count {
-                if items[index].id == item.id {
-                    return index
-                } // if items[index] == item {}
-            } // for index in items {}
-            
-            return 0 // FIXME: Bogus
-    } // func index(of item: Item) -> Int {}
 } // struct Grid: View {}

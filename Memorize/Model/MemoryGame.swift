@@ -59,21 +59,12 @@ struct MemoryGame<CardContent> {
     mutating func choose(card: Card) {
         print("Card chosen : \(card)")
         
-        let chosenIndex: Int = self.index(of : card)
+        let chosenIndex: Int = cards.firstIndex(matching : card)
         self.cards[chosenIndex].isFaceUp.toggle()
     } // func choose(card: Card) {}
     
     
-    func index(of card: Card)
-        -> Int {
-            
-            for index in 0 ..< self.cards.count {
-                if self.cards[index].id == card.id {
-                    return index
-                } // if cards[index].id == card.id {}
-            } // for card in 0 ..< cards.count {}
-        
-            return 0 // FIXME: Bogus value
-    } // func index(of card: Card) -> Int {}
+    
+    
     
 } // struct MemoryGame {}
