@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct MemoryGame<CardContent> {
+struct MemoryGame<CardContent> where CardContent: Equatable {
     
      // //////////////////
     //  MARK: NAMESPACING
@@ -17,7 +17,7 @@ struct MemoryGame<CardContent> {
     struct Card: Identifiable {
         var id: Int
         
-        var isFaceUp: Bool = true
+        var isFaceUp: Bool = false
         var isMatched: Bool = false
         var content: CardContent
     } // struct Card {}
@@ -28,6 +28,7 @@ struct MemoryGame<CardContent> {
     //  MARK: PROPERTIES
     
     var cards: Array<Card>
+    var indexOfTheOneAndOnlyFaceUpCard: Optional<Int> = nil
     
     
     
@@ -60,8 +61,31 @@ struct MemoryGame<CardContent> {
         print("Card chosen : \(card)")
         
         if
-            let chosenIndex: Int = cards.firstIndex(matching : card) {
-            self.cards[chosenIndex].isFaceUp.toggle()    
+            let chosenIndex: Int = cards.firstIndex(matching : card) ,
+            !cards[chosenIndex].isFaceUp ,
+            !cards[chosenIndex].isMatched {
+            
+            if
+                let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
+                
+                if cards[chosenIndex].content == cards[potentialMatchIndex].content {
+                    
+                    cards[chosenIndex].isMatched = true
+                    cards[potentialMatchIndex].isMatched = true
+                } // if cards[chosenIndex].content == cards[potentialMatchIndex].content {}
+                indexOfTheOneAndOnlyFaceUpCard = nil
+                
+            } else {
+                
+                for index in cards.indices {
+                    cards[index].isFaceUp = false
+                } // for index in cards.indices {}
+                indexOfTheOneAndOnlyFaceUpCard = chosenIndex
+                
+            } // if let potentialMatchIndex {}
+                
+            self.cards[chosenIndex].isFaceUp.toggle()
+            
         } // if let chosenIndex {}
     } // func choose(card: Card) {}
     

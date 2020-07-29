@@ -59,8 +59,10 @@ struct CardView: View {
                     .stroke(lineWidth : edgeLineWidth)
                 Text(self.card.content)
             } else {
-                RoundedRectangle(cornerRadius : cornerRadius)
-                    .fill()
+                if !card.isMatched {
+                    RoundedRectangle(cornerRadius : cornerRadius)
+                        .fill()    
+                } // if !card.isMatched {}
             } // if card.isFaceUp {} else {}
         } // ZStack {}
             .font(Font.system(size : setFontSize(for : size)))
