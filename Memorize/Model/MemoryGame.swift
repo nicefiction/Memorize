@@ -28,7 +28,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     //  MARK: PROPERTIES
     
     var cards: Array<Card>
-    var indexOfTheOneAndOnlyFaceUpCard: Optional<Int> = nil
     
     
     
@@ -54,6 +53,40 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     
     
     
+     // //////////////////////////
+    //  MARK: COMPUTED PROPERTIES
+    
+    var indexOfTheOneAndOnlyFaceUpCard: Optional<Int> {
+        get {
+            var faceUpCardIndices: Array<Int> = Array<Int>()
+            
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    faceUpCardIndices.append(index)
+                } // if cards[index].isFaceUp =  true {}
+            } // for index in cards.indices {}
+            
+            if faceUpCardIndices.count == 1 {
+                return faceUpCardIndices.first
+            } else {
+                return nil
+            } // if faceUpCardIndices.count == 1 {} else {}
+        } // get {}
+        
+        
+        set {
+            for index in cards.indices {
+                if index == newValue {
+                    cards[index].isFaceUp = true
+                } else {
+                    cards[index].isFaceUp = false
+                } // if index == newValue {} else {}
+            } // for index in cards.indices {}
+        } // set {}
+    } // var indexOfTheOneAndOnlyFaceUpCard: Optional<Int> {}
+    
+    
+    
      // //////////////
     //  MARK: METHODS
     
@@ -73,18 +106,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
                 } // if cards[chosenIndex].content == cards[potentialMatchIndex].content {}
-                indexOfTheOneAndOnlyFaceUpCard = nil
                 
+                self.cards[chosenIndex].isFaceUp.toggle()
             } else {
-                
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                } // for index in cards.indices {}
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
-                
             } // if let potentialMatchIndex {}
                 
-            self.cards[chosenIndex].isFaceUp.toggle()
             
         } // if let chosenIndex {}
     } // func choose(card: Card) {}
