@@ -10,22 +10,6 @@ import SwiftUI
 
 struct CardView: View {
     
-     // ////////////////////////
-    //  MARK: Drawing Constants
-    
-    private let cornerRadius: CGFloat = 10.0
-    private let edgeLineWidth: CGFloat = 2.0
-    
-    
-    private func setFontSize(for size: CGSize)
-        -> CGFloat {
-            
-            min(size.width ,
-                size.height) * 0.7
-    } // func setFontSize(size: CGSize) {}
-    
-    
-    
      // /////////////////
     //  MARK: PROPERTIES
 
@@ -50,37 +34,32 @@ struct CardView: View {
      // //////////////
     //  MARK: METHODS
     
+    @ViewBuilder
     private func body(for size: CGSize)
         -> some View {
             
-        ZStack {
-            if self.card.isFaceUp {
-                RoundedRectangle(cornerRadius : cornerRadius)
-                    .stroke(lineWidth : edgeLineWidth)
-                
-                Pie(startAngle : Angle.degrees(0.00 - 90.00) ,
-                    endAngle : Angle.degrees(110.00 - 90.00) ,
-                    isClockwise : true)
-                    .padding(5)
-                    .opacity(0.40)
-                
-                Text(self.card.content)
-            } else {
-                if !card.isMatched {
-                    RoundedRectangle(cornerRadius : cornerRadius)
-                        .fill()    
-                } // if !card.isMatched {}
-            } // if card.isFaceUp {} else {}
-        } // ZStack {}
-            .font(Font.system(size : setFontSize(for : size)))
+            if card.isFaceUp || !card.isMatched {
+                ZStack {
+                    Pie(startAngle : Angle.degrees(0.00 - 90.00) ,
+                        endAngle : Angle.degrees(110.00 - 90.00) ,
+                        isClockwise : true)
+                        .padding(5)
+                        .opacity(0.40)
+                    
+                    Text(self.card.content)
+                        .font(Font.system(size : setFontSize(for : size)))
+                } // ZStack {}
+                    .cardify(isFaceUp : card.isFaceUp)
+            } // if card.isFaceUp || !card.isMatched {}
+    } // private func body(for size: CGSize) -> some View {}
+    
+    
+    private func setFontSize(for size: CGSize)
+        -> CGFloat {
             
-    } // func body(for size: CGSize) -> some View {}
-    
-    
-    
-    
-    
-    
+            min(size.width ,
+                size.height) * 0.7
+    } // func setFontSize(size: CGSize) {}
 } // struct CardView: View {}
 
 
