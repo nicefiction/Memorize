@@ -14,14 +14,14 @@ struct CardView: View {
     //  MARK: Drawing Constants
     
     private let cornerRadius: CGFloat = 10.0
-    private let edgeLineWidth: CGFloat = 3.0
+    private let edgeLineWidth: CGFloat = 2.0
     
     
     private func setFontSize(for size: CGSize)
         -> CGFloat {
             
             min(size.width ,
-                size.height) * 0.75
+                size.height) * 0.7
     } // func setFontSize(size: CGSize) {}
     
     
@@ -57,6 +57,13 @@ struct CardView: View {
             if self.card.isFaceUp {
                 RoundedRectangle(cornerRadius : cornerRadius)
                     .stroke(lineWidth : edgeLineWidth)
+                
+                Pie(startAngle : Angle.degrees(0.00 - 90.00) ,
+                    endAngle : Angle.degrees(110.00 - 90.00) ,
+                    isClockwise : true)
+                    .padding(5)
+                    .opacity(0.40)
+                
                 Text(self.card.content)
             } else {
                 if !card.isMatched {
@@ -84,8 +91,14 @@ struct CardView: View {
 //  MARK: PREVIEWS
 
 struct CardView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        CardView(card : MemoryGame<String>.Card(id : 1 ,
-                                                content : "🌞"))
-    }
-}
+        var card = MemoryGame<String>.Card(id : 1 , content : "👻")
+        card.isFaceUp = true
+        
+        return CardView(card : card)
+        
+        
+        
+    } // static var previews: some View {}
+} // struct CardView_Previews: PreviewProvider {}
