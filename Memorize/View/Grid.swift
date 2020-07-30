@@ -15,8 +15,8 @@ struct Grid<Item , ItemView>: View
      // /////////////////
     //  MARK: PROPERTIES
     
-    var items: Array<Item>
-    var viewForItem: (Item) -> ItemView
+    private var items: Array<Item>
+    private var viewForItem: (Item) -> ItemView
     
     
     
@@ -51,7 +51,7 @@ struct Grid<Item , ItemView>: View
      // //////////////
     //  MARK: METHODS
     
-    func body(for layout: GridLayout)
+    private func body(for layout: GridLayout)
         -> some View {
             
             ForEach(items) { item in
@@ -61,7 +61,7 @@ struct Grid<Item , ItemView>: View
     } // func body(for items: [Item]) -> some View {}
     
     
-    func body(for item: Item ,
+    private func body(for item: Item ,
               in layout: GridLayout)
         -> some View {
             

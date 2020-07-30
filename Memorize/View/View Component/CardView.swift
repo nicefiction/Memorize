@@ -13,11 +13,11 @@ struct CardView: View {
      // ////////////////////////
     //  MARK: Drawing Constants
     
-    let cornerRadius: CGFloat = 10.0
-    let edgeLineWidth: CGFloat = 3.0
+    private let cornerRadius: CGFloat = 10.0
+    private let edgeLineWidth: CGFloat = 3.0
     
     
-    func setFontSize(for size: CGSize)
+    private func setFontSize(for size: CGSize)
         -> CGFloat {
             
             min(size.width ,
@@ -50,7 +50,7 @@ struct CardView: View {
      // //////////////
     //  MARK: METHODS
     
-    func body(for size: CGSize)
+    private func body(for size: CGSize)
         -> some View {
             
         ZStack {

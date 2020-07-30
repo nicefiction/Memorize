@@ -27,7 +27,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
      // /////////////////
     //  MARK: PROPERTIES
     
-    var cards: Array<Card>
+    private(set) var cards: Array<Card>
     
     
     
@@ -56,7 +56,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
      // //////////////////////////
     //  MARK: COMPUTED PROPERTIES
     
-    var indexOfTheOneAndOnlyFaceUpCard: Optional<Int> {
+    private var indexOfTheOneAndOnlyFaceUpCard: Optional<Int> {
         get {
             var faceUpCardIndices: Array<Int> = Array<Int>()
             

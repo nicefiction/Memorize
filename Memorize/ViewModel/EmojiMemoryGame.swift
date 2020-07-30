@@ -32,7 +32,7 @@ class EmojiMemoryGame: ObservableObject {
      // ////////
     //  METHODS
     
-    static func createMemoryGame()
+    private static func createMemoryGame()
         -> MemoryGame<String> {
         
         let emojis: Array<String> = ["👻" , "🎃" , "🕷"]
