@@ -27,7 +27,9 @@ struct EmojiMemoryGameView: View {
             Grid(items : self.viewModel.cards) { card in
                 CardView(card : card)
                     .onTapGesture(perform : {
-                        self.viewModel.choose(card : card)
+                        withAnimation(Animation.linear(duration : 2.00)) {
+                            self.viewModel.choose(card : card)
+                        } // withAnimation(Animation.linear(duration: 2.00)) {}
                     }) // .onTapGesture(perform : {})
                 .padding(5)
             } // Grid(items : self.viewModel.cards) { card in }
