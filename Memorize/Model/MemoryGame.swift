@@ -39,6 +39,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         
         cards = Array<Card>()
         
+        
         for pairIndex in 0 ..< numberOfPairsOfCards {
             let content = cardContentFactory(pairIndex)
             
@@ -49,6 +50,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                               content : content))
         } // for pairIndex in 0 ..< numberOfPairsOfCards {}
         
+        
+        cards.shuffle()
     } // init() {}
     
     
