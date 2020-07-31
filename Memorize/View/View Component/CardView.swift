@@ -52,6 +52,7 @@ struct CardView: View {
                         .animation(card.isMatched ? Animation.linear(duration : 2.00) : .default)
                 } // ZStack {}
                     .cardify(isFaceUp : card.isFaceUp)
+                    .transition(AnyTransition.scale)
             } // if card.isFaceUp || !card.isMatched {}
     } // private func body(for size: CGSize) -> some View {}
     
