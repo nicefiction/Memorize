@@ -53,6 +53,8 @@ struct CardView: View {
                 } // ZStack {}
                     .cardify(isFaceUp : card.isFaceUp)
                     .transition(AnyTransition.scale)
+                    .rotation3DEffect(Angle.degrees(card.isFaceUp ? 180 : 0) ,
+                                      axis : (0 , 1 , 0))
             } // if card.isFaceUp || !card.isMatched {}
     } // private func body(for size: CGSize) -> some View {}
     
