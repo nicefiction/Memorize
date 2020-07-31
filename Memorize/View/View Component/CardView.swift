@@ -48,6 +48,8 @@ struct CardView: View {
                     
                     Text(self.card.content)
                         .font(Font.system(size : setFontSize(for : size)))
+                        .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                        .animation(card.isMatched ? Animation.linear(duration : 2.00) : .default)
                 } // ZStack {}
                     .cardify(isFaceUp : card.isFaceUp)
             } // if card.isFaceUp || !card.isMatched {}
