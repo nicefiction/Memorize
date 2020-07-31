@@ -23,15 +23,24 @@ struct EmojiMemoryGameView: View {
     
     var body: some View {
         
-        Grid(items : self.viewModel.cards) { card in
-            CardView(card : card)
-                .onTapGesture(perform : {
-                    self.viewModel.choose(card : card)
-                }) // .onTapGesture(perform : {})
-            .padding(5)
-        } // Grid(items : self.viewModel.cards) { card in }
-            .padding()
-            .foregroundColor(Color.orange)
+        VStack {
+            Grid(items : self.viewModel.cards) { card in
+                CardView(card : card)
+                    .onTapGesture(perform : {
+                        self.viewModel.choose(card : card)
+                    }) // .onTapGesture(perform : {})
+                .padding(5)
+            } // Grid(items : self.viewModel.cards) { card in }
+                .padding()
+                .foregroundColor(Color.orange)
+            
+            
+            Button(action : {
+                self.viewModel.resetGame()
+            }) {
+                Text("New Game")
+            } // Button(action : {}) {}
+        } // VStack {}
         
         
         
