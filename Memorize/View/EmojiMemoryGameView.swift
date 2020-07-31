@@ -36,7 +36,11 @@ struct EmojiMemoryGameView: View {
             
             
             Button(action : {
-                self.viewModel.resetGame()
+                
+                withAnimation(Animation.easeInOut(duration : 2.00)) {
+                    self.viewModel.resetGame()
+                } // withAnimation() {}
+                
             }) {
                 Text("New Game")
             } // Button(action : {}) {}
