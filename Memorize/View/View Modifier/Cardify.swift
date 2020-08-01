@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-struct Cardify: ViewModifier {
+struct Cardify: AnimatableModifier {
     
      // ////////////////////////
     //  MARK: Drawing Constants
@@ -22,12 +22,37 @@ struct Cardify: ViewModifier {
      // /////////////////
     //  MARK: PROPERTIES
     
-    var isFaceUp: Bool
+    var rotation: Double
+    
     
     
      // //////////////////////////
     //  MARK: COMPUTED PROPERTIES
+    
+    var isFaceUp: Bool {
+        rotation < 90
+    } // var isFaceUp: Bool {}
    
+    
+    var animatableData: Double {
+        get { return rotation }
+        set { rotation = newValue }
+    } // var isFaceUp: Bool {}
+    
+    
+    
+     // //////////////////////////
+    //  MARK: INITIALISER METHODS
+    
+    init(isFaceUp: Bool) {
+        rotation = isFaceUp ? 0 : 180
+    } // init(isFaceUp: Bool) {}
+    
+    
+    
+     // /////////////////////
+    //  MARK: HELPER METHODS
+    
     func body(content: Content)
         -> some View {
        
@@ -42,6 +67,8 @@ struct Cardify: ViewModifier {
                         .fill()
                 } // if card.isFaceUp {} else {}
             } // ZStack {}
+                .rotation3DEffect(Angle.degrees(rotation) ,
+                                  axis : (0 , 1 , 0))
         
     } // func body(content: Content) -> some View {}
 } // struct Cardify: ViewModifier {}
