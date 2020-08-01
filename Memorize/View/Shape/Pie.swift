@@ -19,6 +19,22 @@ struct Pie: Shape {
     
     
     
+     // //////////////////////////
+    //  MARK: COMPUTED PROPERTIES
+    
+    var animatableData: AnimatablePair<Double , Double> {
+        get {
+            AnimatablePair(startAngle.radians , endAngle.radians)
+        } // get {}
+        
+        set {
+            startAngle = Angle.radians(newValue.first)
+            endAngle = Angle.radians(newValue.second)
+        } // set {}
+    } // var animatableData: EmptyAnimatableData {}
+    
+    
+    
      // //////////////
     //  MARK: METHODS
     

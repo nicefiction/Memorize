@@ -10,6 +10,13 @@ import SwiftUI
 
 struct CardView: View {
     
+     // ////////////////////////
+    //  MARK: PROPERTY WRAPPERS
+    
+    @State private var animatedBonusRemaining: Double = 0.00
+    
+    
+    
      // /////////////////
     //  MARK: PROPERTIES
 
@@ -40,11 +47,23 @@ struct CardView: View {
             
             if card.isFaceUp || !card.isMatched {
                 ZStack {
-                    Pie(startAngle : Angle.degrees(0.00 - 90.00) ,
-                        endAngle : Angle.degrees(110.00 - 90.00) ,
-                        isClockwise : true)
+                    Group {
+                        if card.isConsumingBonusTime {
+                            Pie(startAngle : Angle.degrees(0.00 - 90.00) ,
+                                endAngle : Angle.degrees((-animatedBonusRemaining * 360) - 90.00) ,
+                                isClockwise : true)
+                                .onAppear(perform : {
+                                    self.startBonusTimeAnimation()
+                                }) // .onAppear(perform : {})
+                        } else {
+                            Pie(startAngle : Angle.degrees(0.00 - 90.00) ,
+                                endAngle : Angle.degrees((-card.bonusRemaining * 360) - 90.00) ,
+                                isClockwise : true)
+                        } // if card.isConsumingBonusTime {} else {}
+                    } // Group {}
                         .padding(5)
                         .opacity(0.40)
+                    
                     
                     Text(self.card.content)
                         .font(Font.system(size : setFontSize(for : size)))
@@ -57,7 +76,7 @@ struct CardView: View {
                 } // ZStack {}
                     .cardify(isFaceUp : card.isFaceUp)
                     .transition(AnyTransition.scale)
-            } // if card.isFaceUp || !card.isMatched {}
+    } // if card.isFaceUp || !card.isMatched {}
     } // private func body(for size: CGSize) -> some View {}
     
     
@@ -67,6 +86,14 @@ struct CardView: View {
             min(size.width ,
                 size.height) * 0.7
     } // func setFontSize(size: CGSize) {}
+    
+    
+    private func startBonusTimeAnimation() {
+        animatedBonusRemaining = card.bonusRemaining // OLIVIER : in percentage
+        withAnimation(Animation.linear(duration: card.bonusTimeRemaining)) {
+            animatedBonusRemaining = 0
+        } // withAnimation(Animation.linear(duration: card.bonusTimeRemaining)) {}
+    } // private func startBonusTimeAnimation() {}
 } // struct CardView: View {}
 
 
