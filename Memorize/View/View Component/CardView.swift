@@ -63,6 +63,7 @@ struct CardView: View {
                     } // Group {}
                         .padding(5)
                         .opacity(0.40)
+                        .transition(.scale)
                     
                     
                     Text(self.card.content)
